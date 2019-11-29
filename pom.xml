@@ -11,7 +11,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zhujuming.vip</groupId>
-    <artifactId>majia-spring-cloud</artifactId>
+    <artifactId>spring-cloud-shopping</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -21,6 +21,10 @@
         <module>spring-cloud-orber</module>
         <module>spring-cloud-contract</module>
         <module>spring-cloud-eureka</module>
+        <module>spring-cloud-common</module>
+        <module>spring-cloud-message</module>
+        <module>spring-cloud-goods</module>
+        <module>spring-cloud-pay</module>
     </modules>
 
     <properties>

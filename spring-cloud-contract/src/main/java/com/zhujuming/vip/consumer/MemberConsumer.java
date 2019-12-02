@@ -9,4 +9,6 @@ public interface MemberConsumer {
 
     @PostMapping("/getMember")
     public String getMember();
+
+
 }

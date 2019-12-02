@@ -1,0 +1,9 @@
+D:\Workspace\SpringCloud\spring-cloud-shopping\spring-cloud-common\src\main\java\com\zhujuming\vip\constants\ResponseCode.java
+D:\Workspace\SpringCloud\spring-cloud-shopping\spring-cloud-common\src\main\java\com\zhujuming\vip\redis\RedisServer.java
+D:\Workspace\SpringCloud\spring-cloud-shopping\spring-cloud-common\src\main\java\com\zhujuming\vip\utils\HttpUtils.java
+D:\Workspace\SpringCloud\spring-cloud-shopping\spring-cloud-common\src\main\java\com\zhujuming\vip\exception\HttpApiException.java
+D:\Workspace\SpringCloud\spring-cloud-shopping\spring-cloud-common\src\main\java\com\zhujuming\vip\vo\ResponseVO.java
+D:\Workspace\SpringCloud\spring-cloud-shopping\spring-cloud-common\src\main\java\com\zhujuming\vip\aop\WebLogAspect.java
+D:\Workspace\SpringCloud\spring-cloud-shopping\spring-cloud-common\src\main\java\com\zhujuming\vip\mq\MessageSender.java
+D:\Workspace\SpringCloud\spring-cloud-shopping\spring-cloud-common\src\main\java\com\zhujuming\vip\exception\ServiceException.java
+D:\Workspace\SpringCloud\spring-cloud-shopping\spring-cloud-common\src\main\java\com\zhujuming\vip\utils\Serializer.java

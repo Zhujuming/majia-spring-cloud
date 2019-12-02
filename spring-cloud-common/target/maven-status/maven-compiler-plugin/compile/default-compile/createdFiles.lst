@@ -1,0 +1,8 @@
+com\zhujuming\vip\mq\MessageSender.class
+com\zhujuming\vip\aop\WebLogAspect.class
+com\zhujuming\vip\exception\ServiceException.class
+com\zhujuming\vip\redis\RedisServer.class
+com\zhujuming\vip\utils\HttpUtils.class
+com\zhujuming\vip\vo\ResponseVO.class
+com\zhujuming\vip\constants\ResponseCode.class
+com\zhujuming\vip\utils\Serializer.class

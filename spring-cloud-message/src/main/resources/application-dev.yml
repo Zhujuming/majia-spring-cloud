@@ -1,0 +1,80 @@
+server:
+  port: 8002                             # 端口号
+
+logging:
+  config: classpath:logback-dev.xml      # 日志读取logback-dev.xml 文件
+
+# 服务注册与发现相关配置
+eureka:
+  instance:
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port} #自定义实例编号
+    prefer-ip-address: true #优先使用IP地址方式进行注册服务
+    ip-address: 127.0.0.1 #配置使用指定IP
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/ #服务注册地址
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:3306/seven_db?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      pool-name: pool-vscloud
+      connectionTestQuery: SELECT 1
+      maximum-pool-size: 3
+      minimum-idle: 10
+      idle-timeout: 6000000
+      connection-timeout: 1800000
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+    in-memory: true
+    pool:
+      enabled: false
+  mail:
+    host: smtp.163.com
+    username: liaoxiang521@163.com
+    password: lx592592
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+#mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml, /mapper/*/*Mapper.xml
+  #实体扫描,多个package用逗号或者分号分隔
+  typeAliasesPackage:
+  typeEnumsPackage:
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 2
+    # 可选参数（默认mysql） MYSQL->`mysql` ORACLE->`oracle` DB2->`db2` H2->`h2`
+    # HSQL->`hsql` SQLITE->`sqlite` POSTGRE->`postgresql` SQLSERVER2005->`sqlserver2005`
+    # SQLSERVER->`sqlserver`
+    db-type: mysql
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    #序列接口实现类配置
+    #key-generator:
+    #逻辑删除配置
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    #自定义填充策略接口实现
+    #meta-object-handler:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false

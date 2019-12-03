@@ -11,5 +11,18 @@
 
     <artifactId>spring-cloud-message</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.zhujuming.vip</groupId>
+            <artifactId>spring-cloud-message-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--feign start-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <!--spring boot 2.0.3版本解决方案：spring-cloud-starter-feign-->
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
 
+    </dependencies>
 </project>

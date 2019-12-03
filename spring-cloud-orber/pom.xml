@@ -19,7 +19,7 @@
         <!-- 引入自定义包 -->
         <dependency>
             <groupId>com.zhujuming.vip</groupId>
-            <artifactId>spring-cloud-contract</artifactId>
+            <artifactId>spring-cloud-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- SpringBoot整合swagger -->

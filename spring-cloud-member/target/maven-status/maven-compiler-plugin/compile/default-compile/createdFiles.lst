@@ -1,2 +1,3 @@
-com\zhujuming\vip\member\MemberApplication.class
-com\zhujuming\vip\member\controller\MemberController.class
+com\zhujuming\vip\MemberApplication.class
+com\zhujuming\vip\impl\MemberImpl.class
+com\zhujuming\vip\controller\MemberController.class

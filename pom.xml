@@ -19,7 +19,7 @@
         <module>spring-cloud-eureka</module>
         <module>spring-cloud-member</module>
         <module>spring-cloud-orber</module>
-        <module>spring-cloud-contract</module>
+        <module>spring-cloud-api</module>
         <module>spring-cloud-common</module>
         <module>spring-cloud-message</module>
         <module>spring-cloud-goods</module>
@@ -191,6 +191,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+
     </dependencies>
     <!--注意：这里必须要添加，否则各种依赖有问题-->
     <repositories>

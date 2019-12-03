@@ -12,6 +12,17 @@
     <artifactId>spring-cloud-member</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.zhujuming.vip</groupId>
+            <artifactId>spring-cloud-member-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--feign start-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <!--spring boot 2.0.3版本解决方案：spring-cloud-starter-feign-->
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
 
         <!--SpringCloud consul-server -->
 <!--        <dependency>-->
@@ -19,18 +30,12 @@
 <!--            <artifactId>spring-cloud-starter-consul-discovery</artifactId>-->
 <!--        </dependency>-->
 
-
         <!-- actuator是监控系统健康情况的工具 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zhujuming.vip</groupId>
-            <artifactId>spring-cloud-contract</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
+<!--        </dependency>-->
+
 
     </dependencies>
 

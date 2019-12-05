@@ -37,8 +37,8 @@ spring:
       enabled: false
   mail:
     host: smtp.163.com
-    username: liaoxiang521@163.com
-    password: lx592592
+    username: 893371542@qq.com
+    password: rtawdmwuibuxbddb
     default-encoding: UTF-8
     properties:
       mail:

@@ -9,7 +9,6 @@ import javax.jms.Destination;
 
 @Component
 public class MessageSender {
-
     @Autowired
     private JmsMessagingTemplate jmsTemplate;
 

@@ -1,5 +1,5 @@
 server:
-  port: 8001                             # 端口号
+  port: 6001                             # 端口号
 
 logging:
   config: classpath:logback-dev.xml      # 日志读取logback-dev.xml 文件
@@ -28,6 +28,15 @@ spring:
       minimum-idle: 10
       idle-timeout: 6000000
       connection-timeout: 1800000
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+    in-memory: true
+    pool:
+      enabled: false
+activemq:
+  queue: seven-activemq-queue
 
 #mybatis-plus
 mybatis-plus:

@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.9.RELEASE</version>
+        <version>2.1.9.RELEASE</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -24,6 +24,7 @@
         <module>spring-cloud-message</module>
         <module>spring-cloud-goods</module>
         <module>spring-cloud-pay</module>
+        <module>spring-cloud-oauth2</module>
     </modules>
 
     <properties>

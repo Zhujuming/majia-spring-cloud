@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: spring-cloud-message
-  profiles:
-    active: dev

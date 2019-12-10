@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: spring-cloud-oauth2
+  profiles:
+    active: dev

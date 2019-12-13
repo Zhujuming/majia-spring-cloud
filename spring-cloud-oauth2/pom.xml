@@ -11,45 +11,216 @@
 
     <artifactId>spring-cloud-oauth2</artifactId>
 
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+    </properties>
+
     <dependencies>
-        <!-- 集成Common包 -->
-        <dependency>
-            <groupId>com.zhujuming.vip</groupId>
-            <artifactId>spring-cloud-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <!-- 集成Eureka客户端 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <!--spring boot 2.0.3版本解决方案：spring-cloud-starter-feign-->
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
-            <version>2.3.5.RELEASE</version>
-        </dependency>
-        <!--jwt start-->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-jwt</artifactId>
-            <version>1.0.10.RELEASE</version>
-        </dependency>
-        <!-- 集成mysql包 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <!--db start-->
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>${HikariCP.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
             <version>2.0</version>
         </dependency>
+        <!-- 集成redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- spring-boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--        </dependency>-->
+        <!-- 将 token 存储在 redis 中 -->
+        <!--        <dependency>-->
+        <!--        <groupId>org.springframework.boot</groupId>-->
+        <!--        <artifactId>spring-boot-starter-data-redis</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>&ndash;&gt;-->
+
+
+
+        <!--Spring Security 与 Security 的 OAuth2 扩展 https://github.com/spring-cloud/spring-cloud-security -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>6.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--https://github.com/spotify/docker-maven-plugin -->
+            <!--<plugin>-->
+            <!--<groupId>com.spotify</groupId>-->
+            <!--<artifactId>docker-maven-plugin</artifactId>-->
+            <!--<version>1.1.1</version>-->
+            <!--<configuration>-->
+            <!--&lt;!&ndash; 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 &ndash;&gt;-->
+            <!--&lt;!&ndash; 详见：https://github.com/spotify/docker-maven-plugin    Invalid repository name ... only [a-z0-9-_.] are allowed&ndash;&gt;-->
+            <!--<imageName>microservice-discovery-eureka</imageName>-->
+            <!--<baseImage>java</baseImage>-->
+            <!--<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>-->
+            <!--<resources>-->
+            <!--<resource>-->
+            <!--<targetPath>/</targetPath>-->
+            <!--<directory>${project.build.directory}</directory>-->
+            <!--<include>${project.build.finalName}.jar</include>-->
+            <!--</resource>-->
+            <!--</resources>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+            <!--https://github.com/spotify/dockerfile-maven-->
+            <!--<plugin>-->
+            <!--<groupId>com.spotify</groupId>-->
+            <!--<artifactId>dockerfile-maven-plugin</artifactId>-->
+            <!--<version>1.4.4</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>build-image</id>-->
+            <!--<goals>-->
+            <!--<goal>build</goal>-->
+            <!--&lt;!&ndash;<goal>push</goal>&ndash;&gt;-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<imageName>${project.artifactId}</imageName>-->
+            <!--&lt;!&ndash;<repository>spotify/foobar</repository>&ndash;&gt;-->
+            <!--&lt;!&ndash;<tag>${project.version}</tag>&ndash;&gt;-->
+            <!--&lt;!&ndash;<buildArgs>&ndash;&gt;-->
+            <!--&lt;!&ndash;<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>&ndash;&gt;-->
+            <!--&lt;!&ndash;</buildArgs>&ndash;&gt;-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+    <!--    <dependencies>-->
+    <!--        &lt;!&ndash; 集成Common包 &ndash;&gt;-->
+    <!--        <dependency>-->
+    <!--            <groupId>com.zhujuming.vip</groupId>-->
+    <!--            <artifactId>spring-cloud-common</artifactId>-->
+    <!--            <version>1.0-SNAPSHOT</version>-->
+    <!--        </dependency>-->
+    <!--        &lt;!&ndash; 集成Eureka客户端 &ndash;&gt;-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.springframework.cloud</groupId>-->
+    <!--            &lt;!&ndash;spring boot 2.0.3版本解决方案：spring-cloud-starter-feign&ndash;&gt;-->
+    <!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+    <!--        </dependency>-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.springframework.cloud</groupId>-->
+    <!--            &lt;!&ndash;spring boot 1.X：spring-cloud-starter-hystrix&ndash;&gt;-->
+    <!--            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>-->
+    <!--        </dependency>-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.springframework.cloud</groupId>-->
+    <!--            &lt;!&ndash;spring boot 1.X：spring-cloud-starter-hystrix-dashboard&ndash;&gt;-->
+    <!--            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>-->
+    <!--        </dependency>-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.springframework.cloud</groupId>-->
+    <!--            <artifactId>spring-cloud-starter-oauth2</artifactId>-->
+    <!--        </dependency>-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.springframework.cloud</groupId>-->
+    <!--            <artifactId>spring-cloud-starter-security</artifactId>-->
+    <!--        </dependency>-->
+    <!--        <dependency>-->
+    <!--            <groupId>com.nimbusds</groupId>-->
+    <!--            <artifactId>nimbus-jose-jwt</artifactId>-->
+    <!--            <version>6.4.2</version>-->
+    <!--        </dependency>-->
+    <!--        &lt;!&ndash; 集成mysql包 &ndash;&gt;-->
+    <!--        <dependency>-->
+    <!--            <groupId>mysql</groupId>-->
+    <!--            <artifactId>mysql-connector-java</artifactId>-->
+    <!--        </dependency>-->
+    <!--        &lt;!&ndash;db start&ndash;&gt;-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.springframework.boot</groupId>-->
+    <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+    <!--        </dependency>-->
+    <!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <groupId>com.zaxxer</groupId>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <artifactId>HikariCP</artifactId>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <version>${HikariCP.version}</version>&ndash;&gt;-->
+    <!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.apache.commons</groupId>-->
+    <!--            <artifactId>commons-pool2</artifactId>-->
+    <!--            <version>2.0</version>-->
+    <!--        </dependency>-->
+    <!--    </dependencies>-->
 </project>

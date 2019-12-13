@@ -7388,3 +7388,27 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 [2m2019-12-10 10:55:41.937[0;39m [32m INFO[0;39m [35m18392[0;39m [2m---[0;39m [2m[       Thread-6][0;39m [36mcom.zaxxer.hikari.HikariDataSource      [0;39m [2m:[0;39m pool-vscloud - Shutdown initiated...
 [2m2019-12-10 10:55:41.953[0;39m [32m INFO[0;39m [35m18392[0;39m [2m---[0;39m [2m[       Thread-6][0;39m [36mcom.zaxxer.hikari.HikariDataSource      [0;39m [2m:[0;39m pool-vscloud - Shutdown completed.
 [2m2019-12-10 10:55:41.967[0;39m [32m INFO[0;39m [35m18392[0;39m [2m---[0;39m [2m[       Thread-6][0;39m [36mio.undertow.servlet                     [0;39m [2m:[0;39m Destroying Spring FrameworkServlet 'dispatcherServlet'
+[2m2019-12-13 14:36:21.412[0;39m [32m INFO[0;39m [35m20952[0;39m [2m---[0;39m [2m[           main][0;39m [36mcom.zhujuming.vip.MemberApplication     [0;39m [2m:[0;39m The following profiles are active: dev
+[2m2019-12-13 14:36:22.790[0;39m [33m WARN[0;39m [35m20952[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.m.s.mapper.ClassPathMapperScanner     [0;39m [2m:[0;39m No MyBatis mapper was found in '[com.zhujuming.vip]' package. Please check your configuration.
+[2m2019-12-13 14:36:23.051[0;39m [32m INFO[0;39m [35m20952[0;39m [2m---[0;39m [2m[           main][0;39m [36m.s.d.r.c.RepositoryConfigurationDelegate[0;39m [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+[2m2019-12-13 14:36:23.054[0;39m [32m INFO[0;39m [35m20952[0;39m [2m---[0;39m [2m[           main][0;39m [36m.s.d.r.c.RepositoryConfigurationDelegate[0;39m [2m:[0;39m Bootstrapping Spring Data repositories in DEFAULT mode.
+[2m2019-12-13 14:36:23.077[0;39m [32m INFO[0;39m [35m20952[0;39m [2m---[0;39m [2m[           main][0;39m [36m.s.d.r.c.RepositoryConfigurationDelegate[0;39m [2m:[0;39m Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
+[2m2019-12-13 14:36:23.281[0;39m [33m WARN[0;39m [35m20952[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.boot.actuate.endpoint.EndpointId    [0;39m [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+[2m2019-12-13 14:36:23.393[0;39m [33m WARN[0;39m [35m20952[0;39m [2m---[0;39m [2m[           main][0;39m [36mConfigServletWebServerApplicationContext[0;39m [2m:[0;39m Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'dataSource' defined in BeanDefinition defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Cannot register bean definition [Root bean: class [org.springframework.aop.scope.ScopedProxyFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in BeanDefinition defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]] for bean 'dataSource': There is already [Root bean: class [null]; scope=refresh; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=false; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]] bound.
+[2m2019-12-13 14:36:23.421[0;39m [32m INFO[0;39m [35m20952[0;39m [2m---[0;39m [2m[           main][0;39m [36mConditionEvaluationReportLoggingListener[0;39m [2m:[0;39m 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2m2019-12-13 14:36:23.438[0;39m [31mERROR[0;39m [35m20952[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.b.d.LoggingFailureAnalysisReporter  [0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'dataSource', defined in BeanDefinition defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class], could not be registered. A bean with that name has already been defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+

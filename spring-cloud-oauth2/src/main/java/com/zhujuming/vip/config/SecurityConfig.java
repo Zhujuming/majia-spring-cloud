@@ -23,6 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.web.cors.CorsUtils;
 
@@ -33,24 +34,40 @@ import org.springframework.web.cors.CorsUtils;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
     // 请配置这个，以保证在刷新Token时能成功刷新
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
         // 配置密码加密方式 BCryptPasswordEncoder，添加用户加密的时候请也用这个加密
-        auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());
+//        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+        auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("123456")).roles("ADMIN");//基于内存管理的角色授权登录系统
+
     }
 
     @Bean
-    @Override
-    protected UserDetailsService userDetailsService() {
-        // 这里是添加两个用户到内存中去，实际中是从#下面去通过数据库判断用户是否存在
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        BCryptPasswordEncoder passwordEncode = new BCryptPasswordEncoder();
-        String pwd = passwordEncode.encode("123456");
-        manager.createUser(User.withUsername("user_1").password(pwd).authorities("USER").build());
-        manager.createUser(User.withUsername("user_2").password(pwd).authorities("USER").build());
-        return manager;
+    public PasswordEncoder passwordEncoder(){
+       return new BCryptPasswordEncoder();
     }
+
+
+//    @Bean
+//    @Override
+//    protected UserDetailsService userDetailsService() {
+//        // 这里是添加两个用户到内存中去，实际中是从#下面去通过数据库判断用户是否存在
+//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+////        BCryptPasswordEncoder passwordEncode = new BCryptPasswordEncoder();
+//        MyPasswordEncoder passwordEncode = new MyPasswordEncoder();
+////        String pwd = passwordEncode.encode("123456");
+//        String pwd = passwordEncoder().encode("123456");
+//        manager.createUser(User.withUsername("user_1").password(pwd).authorities("USER").build());
+//        return manager;
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

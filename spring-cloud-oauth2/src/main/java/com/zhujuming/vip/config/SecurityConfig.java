@@ -82,8 +82,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //@EnableWebSecurity
 //public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-
 //
 //    //需要放行的URL
 //    private static final String[] AUTH_WHITELIST = {

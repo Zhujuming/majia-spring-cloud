@@ -40,8 +40,8 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     AuthenticationManager authenticationManager;
-    @Autowired
-    RedisConnectionFactory redisConnectionFactory;
+//    @Autowired
+//    RedisConnectionFactory redisConnectionFactory;
 
 
     @Override
@@ -55,7 +55,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.accessTokenConverter(accessTokenConverter());
-        endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager);
+//        endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager);
 //        endpoints.authenticationManager(authenticationManager);
     }
 
@@ -98,11 +98,11 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
         return accessTokenConverter;
     }
 
-    @Bean
-    public TokenStore tokenStore() {
-        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-        return tokenStore;
-    }
+//    @Bean
+//    public TokenStore tokenStore() {
+//        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
+//        return tokenStore;
+//    }
 
 
 
